@@ -122,7 +122,7 @@
 
 [个人日志系统功能在线演示（哔哩哔哩）](https://www.bilibili.com/video/BV1fi4y1U7cq/)
 
-
+[更多细节请移步我的博客](https://blog.csdn.net/m0_47214030/article/details/124257547)
 
 ## 六、 数据库设计
 
