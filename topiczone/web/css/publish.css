@@ -1,0 +1,83 @@
+/*
+    发布文章样式表
+*/
+*{
+    font:bolder 16px "微软雅黑";
+}
+input,textarea{
+    outline: none;
+    resize: none;
+    border: 1px solid deepskyblue;
+}
+
+.publish-wrapper{
+    width:80%;
+    margin:20px auto;
+}
+
+/* 标题模块 */
+.publish-wrapper .title-wrapper{
+    width:80%;
+    height:60px;
+    margin:0 auto;
+    display: flex;
+    /*居中*/
+    /*justify-content: center;*/
+    align-items: center;
+}
+.publish-wrapper .title-wrapper .title-input{
+    width:90%;
+    margin-right:40px;
+}
+.publish-wrapper .line{
+    width:100%;
+    margin-top:10px;
+    border-bottom: 1px solid red;
+}
+.publish-wrapper .title-wrapper input{
+    border-radius: 4px 4px;
+    text-indent: 1rem;
+    width:93%;
+    height:30px;
+}
+.publish-wrapper .title-wrapper .publish-btn{
+    width:100px;
+    height:30px;
+    text-indent: 0;
+    text-align: center;
+    margin-right:10px;
+    cursor: pointer;
+    background: antiquewhite;
+}
+
+.publish-wrapper .title-wrapper .back-to-main{
+    width:100px;
+    height:30px;
+    color:black;
+    text-align: center;
+    line-height: 30px;
+    cursor:pointer;
+    border-radius: 4px 4px;
+    background: antiquewhite;
+    border: 1px solid deepskyblue;
+    text-decoration: none;
+}
+
+.publish-wrapper .title-wrapper .publish-btn:hover,
+.publish-wrapper .title-wrapper .back-to-main:hover{
+    background:palevioletred;
+    color:white;
+}
+
+/* 内容区 */
+.publish-wrapper .content-wrapper{
+    width:80%;
+    margin:20px auto;
+}
+.publish-wrapper .content-wrapper textarea{
+    text-indent: 1rem;
+    text-align: left;
+    width:100%;
+    min-height:600px;
+    line-height: 40px;
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/friendManage.css}">
+    <link rel="icon" th:href="@{/imgs/icon/往事随风.jpg}">
+    <title>friendManage</title>
+    <script th:src="@{/js/friendManage.js}"></script>
+</head>
+<body>
+<div class="friend-manage-wrapper">
+    <div class="friend-manage-content">
+        <h1 class="friend-manage-title">
+            <span>用户管理</span>
+            <a th:href="@{|/user.do?choice=friend&id=${session.userBasic.id}|}" class="back-to-main">返回主页</a>
+        </h1>
+        <form th:action="@{|/user.do?choice=friendManage&userBasicId=${session.userBasic.id}|}" method="post"
+              class="search-form">
+            <input type="hidden" name="mode" value="search">
+            <input type="hidden" name="pageNumber" value="1">
+            搜索用户：<input class="search-input" type="search" placeholder="请输入要搜索的账号" name="keyword">
+            <input type="submit" value="点击搜索" class="search-btn">
+        </form>
+        <table class="friend-manage-table">
+            <tr th:if="${session.flag}">
+                <th colspan="4">用户列表</th>
+            </tr>
+            <tr th:unless="${session.flag}">
+                <th colspan="4">关注列表</th>
+            </tr>
+            <tr>
+                <th>头像</th>
+                <th>昵称</th>
+                <th>账号</th>
+                <th>操作</th>
+            </tr>
+            <tr th:if="${#lists.isEmpty(session.userBasicList) && session.flag}">
+                <th colspan="4">
+                    暂无该用户
+                </th>
+            </tr>
+            <tr th:if="${!(#lists.isEmpty(session.userBasicList)) && session.flag}"
+                th:each="userBasic : ${session.userBasicList}">
+                <td>
+                    <img th:src="@{|/imgs/${userBasic.headImage}|}" alt="头像">
+                </td>
+                <td class="user-nickName">
+                    <a th:href="@{|/user.do?choice=friend&id=${userBasic.id}|}" th:text="${userBasic.nickName}"></a>
+                </td>
+                <td th:text="${userBasic.loginId}">
+                    <p>20121212</p>
+                </td>
+                <td th:if="${userBasic.addFriend}" class="add-friend">
+                    <a th:data="${userBasic.nickName}"
+                       th:onclick="|addFriend(${session.userBasic.id},${userBasic.id},this.getAttribute('data'))|">关注该用户</a>
+                </td>
+                <td th:unless="${userBasic.addFriend}">
+                    已关注
+                </td>
+            </tr>
+
+            <tr th:if="${#lists.isEmpty(session.friendList) && !session.flag}">
+                <th colspan="4">
+                    暂无关注
+                </th>
+            </tr>
+            <tr th:if="${!(#lists.isEmpty(session.friendList)) && !session.flag}" th:each="friend : ${session.friendList}">
+                <td>
+                    <img th:src="@{|/imgs/${friend.headImage}|}" alt="头像">
+                </td>
+                <td class="friend-nickName">
+                    <a th:href="@{|/user.do?choice=friend&id=${friend.id}|}" th:text="${friend.nickName}"></a>
+                </td>
+                <td th:text="${friend.loginId}">
+                    <p>20121212</p>
+                </td>
+                <td class="delete-friend">
+                    <a th:data="${friend.nickName}"
+                       th:onclick="|deleteFriend(${friend.id},${session.userBasic.id},this.getAttribute('data'))|">取消关注</a>
+                </td>
+            </tr>
+        </table>
+        <!-- 搜索结果的分页按钮-->
+        <div th:if="${session.flag}" th:onclick="" class="page-btn-wrapper">
+            <button th:keyword="${session.keyword}"
+                    th:onclick="|searchPage('search',this.getAttribute('keyword'),${session.userBasic.id},${1})|"
+                    th:disabled="${session.userPageNumber == 1}">首页
+            </button>
+            <button th:keyword="${session.keyword}"
+                    th:onclick="|searchPage('search',this.getAttribute('keyword'),${session.userBasic.id},${session.userPageNumber + 1})|"
+                    th:disabled="${session.userPageNumber == session.userPageCount}">
+                下一页
+            </button>
+            <button th:keyword="${session.keyword}"
+                    th:onclick="|searchPage('search',this.getAttribute('keyword'),${session.userBasic.id},${session.userPageNumber - 1})|"
+                    th:disabled="${session.userPageNumber == 1}">
+                上一页
+            </button>
+            <button th:keyword="${session.keyword}"
+                    th:onclick="|searchPage('search',this.getAttribute('keyword'),${session.userBasic.id},${session.userPageCount})|"
+                    th:disabled="${session.userPageNumber == session.userPageCount}">
+                尾页
+            </button>
+        </div>
+        <!-- 好友列表的分页按钮-->
+        <div th:unless="${session.flag}" th:onclick="" class="page-btn-wrapper">
+            <button th:onclick="|friendPage(${session.userBasic.id},${1})|"
+                    th:disabled="${session.friendPageNumber == 1}">首页</button>
+            <button th:onclick="|friendPage(${session.userBasic.id},${session.friendPageNumber + 1})|"
+                    th:disabled="${session.friendPageNumber == session.friendPageCount || session.friendPageCount == 0}">下一页</button>
+            <button th:onclick="|friendPage(${session.userBasic.id},${session.friendPageNumber - 1})|"
+                    th:disabled="${session.friendPageNumber == 1}">上一页</button>
+            <button th:onclick="|friendPage(${session.userBasic.id},${session.friendPageCount})|"
+                    th:disabled="${session.friendPageNumber == session.friendPageCount || session.friendPageCount == 0}">尾页</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

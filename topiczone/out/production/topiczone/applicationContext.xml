@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!--文档类型定义-->
+<!DOCTYPE beans [
+        <!ELEMENT beans (bean*)>
+        <!ELEMENT bean (property*)>
+        <!ELEMENT property (#PCDATA)>
+
+        <!ATTLIST bean id ID #REQUIRED>
+        <!ATTLIST bean class CDATA #IMPLIED>
+        <!ATTLIST property name CDATA #IMPLIED>
+        <!ATTLIST property ref IDREF #IMPLIED>
+        ]>
+<beans>
+
+    <bean id="userBasicDAO" class="com.project.zone.dao.impl.UserBasicDAOImpl"/>
+    <bean id="userDetailDAO" class="com.project.zone.dao.impl.UserDetailDAOImpl"></bean>
+    <bean id="topicDAO" class="com.project.zone.dao.impl.TopicDAOImpl"/>
+    <bean id="replyDAO" class="com.project.zone.dao.impl.ReplyDAOImpl"></bean>
+    <bean id="hostReplyDAO" class="com.project.zone.dao.impl.HostReplyDAOImpl"></bean>
+
+    <bean id="userBasicService" class="com.project.zone.service.impl.UserBasicServiceImpl">
+        <property name="userBasicDAO" ref="userBasicDAO"></property>
+    </bean>
+    <bean id="userDetailService" class="com.project.zone.service.impl.UserDetailServiceImpl">
+        <property name="userDetailDAO" ref="userDetailDAO"></property>
+    </bean>
+    <bean id="hostReplyService" class="com.project.zone.service.impl.HostReplyServiceImpl">
+        <property name="hostReplyDAO" ref="hostReplyDAO"></property>
+        <property name="userBasicService" ref="userBasicService"></property>
+    </bean>
+    <bean id="replyService" class="com.project.zone.service.impl.ReplyServiceImpl">
+        <property name="replyDAO" ref="replyDAO"></property>
+        <property name="hostReplyService" ref="hostReplyService"></property>
+        <property name="userBasicService" ref="userBasicService"></property>
+        <property name="topicService" ref="topicService"></property>
+    </bean>
+    <bean id="topicService" class="com.project.zone.service.impl.TopicServiceImpl">
+        <property name="topicDAO" ref="topicDAO"></property>
+        <property name="replyService" ref="replyService"></property>
+        <property name="userBasicService" ref="userBasicService"></property>
+    </bean>
+
+    <bean id="user" class="com.project.zone.controller.UserController">
+        <property name="userBasicService" ref="userBasicService"></property>
+        <property name="userDetailService" ref="userDetailService"></property>
+        <property name="topicService" ref="topicService"></property>
+        <property name="replyService" ref="replyService"></property>
+        <property name="hostReplyService" ref="hostReplyService"></property>
+    </bean>
+
+    <bean id="topic" class="com.project.zone.controller.TopicController">
+        <property name="topicService" ref="topicService"></property>
+        <property name="replyService" ref="replyService"></property>
+        <property name="hostReplyService" ref="hostReplyService"></property>
+    </bean>
+
+    <bean id="reply" class="com.project.zone.controller.ReplyController">
+        <property name="replyService" ref="replyService"></property>
+        <property name="hostReplyService" ref="hostReplyService"></property>
+    </bean>
+
+    <bean id="error" class="com.project.zone.controller.ErrorController"/>
+</beans>

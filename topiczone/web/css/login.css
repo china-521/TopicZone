@@ -1,0 +1,80 @@
+/*
+    登录样式表
+*/
+.login-out-wrapper {
+    width: 600px;
+    color:aliceblue;
+    background: rgba(0, 0, 0, .4);
+    border: 1px solid deepskyblue;
+    margin: 10% auto;
+    text-align: center;
+}
+
+.login-out-wrapper .login-container {
+    width: 80%;
+    margin: 5% auto;
+}
+
+.login-out-wrapper .login-container .login-title {
+    border: 1px solid palevioletred;
+    padding: 20px 0;
+    color:springgreen;
+    font-family: "黑体";
+}
+
+.login-out-wrapper .login-container .login-form {
+    line-height: 40px;
+}
+
+.login-out-wrapper .login-container .login-form .login-login-list{
+    padding:15px 0;
+}
+
+.login-out-wrapper .login-container .login-form .login-login-list li{
+    position: relative;
+}
+
+/* 登录验证样式 */
+.login-out-wrapper .login-container .login-form .login-login-list li .validation{
+    position: absolute;
+    width:150px;
+    height:40px;
+    margin-left:10px;
+    color:springgreen;
+    top:17px;
+    font:bolder 14px "仿宋";
+    text-align: left;
+}
+
+
+.login-out-wrapper .login-container .login-form .login-login-btn-wrapper {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.login-out-wrapper .login-container .login-form .login-login-btn-wrapper .btn{
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
+.login-out-wrapper .login-container .login-form .login-btn,
+.login-out-wrapper .login-container .login-form .register-btn{
+    width:80px;
+    height:30px;
+    display: block;
+    font:bold 14px "黑体";
+    line-height: 30px;
+    color:aliceblue;
+    background:#00a2ff;
+    border:1px solid orange;
+    cursor:pointer;
+    text-decoration: none;
+}
+.forget-password{
+    color:skyblue;
+}
+
+.copy{
+    color:springgreen;
+}

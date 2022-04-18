@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" th:href="@{/imgs/icon/往事随风.jpg}">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/publish.css}">
+    <title>publish</title>
+
+    <script th:src="@{/js/publish.js}"></script>
+</head>
+<body>
+    <div class="publish-wrapper">
+        <form th:action="@{/topic.do}" method="post" class="publish-form">
+            <input type="hidden" name="choice" value="publish">
+            <!-- 标题-->
+            <div class="title-wrapper">
+                <div class="title-input">
+                    标题：<input type="text" name="title"placeholder="日志标题" class="topic-title">
+                </div>
+                <input type="submit" value="点击发布" class="publish-btn">
+                <a th:href="@{|/user.do?choice=friend&id=${session.authorId}|}" class="back-to-main">个人主页</a>
+            </div>
+            <span class="line"></span>
+            <!-- 内容-->
+            <div class="content-wrapper">
+                 <textarea name="content" id="content" placeholder="发布一篇精彩的日志"></textarea>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+/* 好友管理样式表 */
+
+body{
+    padding-bottom: 1px;
+}
+
+.friend-manage-wrapper{
+    padding-bottom: 1px;
+    width:1200px;
+    margin:20px auto;
+}
+
+.friend-manage-content{
+    width:100%;
+    margin-bottom: 50px;
+    background: #ffefba; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffefba, #ffffff); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffefba, #ffffff);
+    border:1px solid deepskyblue;
+    text-align: center;
+}
+
+.friend-manage-wrapper .friend-manage-title{
+    margin:20px 0;
+    padding-bottom: 20px;
+    position:relative;
+    border-bottom: 1px solid red;
+}
+
+.friend-manage-wrapper .search-form{
+    padding-bottom: 20px;
+}
+
+.friend-manage-wrapper .search-input{
+    height:30px;
+    border-radius:10px 10px;
+    text-indent: 1rem;
+}
+
+.friend-manage-wrapper .search-btn{
+    width:100px;
+    height:30px;
+    border-radius:10px 10px;
+    margin-left:10px;
+    cursor: pointer;
+}
+
+.friend-manage-wrapper .friend-manage-table{
+    width:100%;
+    line-height: 50px;
+}
+
+.friend-manage-wrapper .friend-manage-table,
+.friend-manage-wrapper .friend-manage-table th,
+.friend-manage-wrapper .friend-manage-table td{
+    border:1px solid palevioletred;
+    border-collapse: collapse;
+}
+
+.friend-manage-table img{
+    width:60px;
+    height:60px;
+    margin-top:20px;
+    border-radius: 50% 50%;
+    border:1px solid palevioletred;
+}
+
+/* 鼠标移入好友昵称或用户昵称显示下划线 */
+.friend-nickName a,.user-nickName a{
+    text-decoration: none;
+}
+.friend-nickName:hover a,
+.user-nickName:hover a{
+    text-decoration: underline;
+    color:red;
+}
+
+/* 返回主页 */
+.friend-manage-title .back-to-main{
+    position:absolute;
+    right:20px;
+    top:20px;
+    color:rgb(236 ,82, 82);
+    font:16px "微软雅黑";
+}
+
+/* 搜索按钮 */
+.friend-manage-table .search-input{
+    height:30px;
+}
+
+/* 添加好友 */
+.friend-manage-table .add-friend:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    color:red;
+}
+/* 删除好友 */
+.friend-manage-table .delete-friend:hover{
+    cursor: pointer;
+    color:red;
+}
+
+/* 分页按钮 */
+.friend-manage-wrapper .page-btn-wrapper{
+    padding:20px 0;
+    width:100%;
+}
+.friend-manage-wrapper .page-btn-wrapper button{
+    width:100px;
+    height:30px;
+    margin-left:20px;
+    cursor: pointer;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <link rel="icon" th:href="@{/imgs/icon/往事随风.jpg}">
+    <title>login</title>
+    <script th:src="@{/js/login.js}"></script>
+</head>
+<body>
+<div class="login-out-wrapper">
+    <div class="login-container">
+        <h1 class="login-title">欢迎登录个人日志系统</h1>
+        <form th:action="@{/user.do}" method="post" name="login-form"
+              class="login-form">
+            <input type="hidden" name="choice" value="login">
+            <input type="hidden" name="mode" value="login">
+            <ul class="login-login-list">
+                <li>
+                    账 号：<input type="number" name="loginId" class="login-id">
+                    <span th:if="${session.loginError}" class="login-validation validation">
+                        你的账号或密码有误，
+                        请重新输入
+                    </span>
+                </li>
+                <li>
+                    密 码：<input type="password" name="password" class="login-password">
+                </li>
+            </ul>
+            <div class="login-login-btn-wrapper">
+                <div class="btn">
+                    <input type="submit" value="登录" class="login-btn">
+                    <a th:href="@{/user.do?choice=intoRegister}" class="register-btn">注册</a>
+                </div>
+                <a th:href="@{/user.do?choice=intoRecoverPassword}" class="forget-password">忘记密码？</a>
+            </div>
+        </form>
+        <p class="copy">&copy;版权所有 · ☆往事随風☆</p>
+    </div>
+</div>
+</body>
+</html>

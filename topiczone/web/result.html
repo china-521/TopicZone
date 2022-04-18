@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/result.css}">
+    <link rel="icon" th:href="@{/imgs/icon/往事随风.jpg}">
+    <title>result</title>
+</head>
+<body>
+   <div class="result-wrapper">
+       <h1 th:if="${session.recoverPassword.length() > 0 && session.recoverPassword != null}" th:text="|请牢记你的密码：${session.recoverPassword}|"></h1>
+       <h1 th:unless="${session.recoverPassword.length() > 0 && session.recoverPassword != null}" th:text="密码找回失败"></h1>
+       <a th:href="@{/user.do?choice=intoLogin}" class="back-to-main">返回主页</a>
+   </div>
+</body>
+</html>

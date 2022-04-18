@@ -1,0 +1,105 @@
+/* 个人中心样式表 */
+
+input{
+    border:none;
+    border:1px solid skyblue;
+}
+
+.personal-wrapper{
+    width:1200px;
+    margin:100px auto;
+    padding:0 20px;
+    text-align: center;
+    border:1px solid red;
+    background: #ffefba; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffefba, #ffffff); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffefba, #ffffff);
+}
+
+.personal-wrapper .personal-title{
+    margin:20px 0 20px 0;
+}
+.personal-wrapper .personal-show-update{
+    display: flex;
+}
+
+.personal-wrapper .personal-form{
+    position:relative;
+}
+
+.personal-wrapper .personal-form,
+.personal-wrapper .personal-show{
+    width:100%;
+    line-height: 40px;
+    margin-bottom: 20px;
+}
+.personal-wrapper .personal-show{
+    border-right: 1px solid orchid;
+}
+.personal-wrapper .personal-show li{
+    width:50%;
+    height:40px;
+    margin:3px auto;
+    display: flex;
+}
+
+.personal-form .btn-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.personal-form .personal-btn{
+    width:90px;
+    height:30px;
+    margin-left:20px;
+    margin-right: 14px;
+    cursor: pointer;
+    background: #66CCCC;
+    color:white;
+    font:14px "幼圆";
+    border:1px solid deepskyblue;
+}
+
+.personal-form .shut-account{
+    margin-right:10px;
+}
+
+.personal-form .back-to-main,
+.personal-form .shut-account{
+    width:90px;
+    height:30px;
+    cursor: pointer;
+    background: #66CCCC;
+    color:white;
+    border:1px solid deepskyblue;
+    text-decoration: none;
+    font:14px "幼圆";
+    line-height: 30px;
+}
+
+/* 设置异常信息样式 */
+.error-message{
+    /*position: absolute;*/
+    /*right:0px;*/
+    /*bottom:220px;*/
+    color:red;
+    font:bold 12px "微软雅黑";
+    line-height: 30px;
+}
+.email-error,
+.phone-error,
+.card-id-error{
+    position: absolute;
+}
+.email-error{
+    top:84px;
+    right:10px;
+}
+.phone-error{
+    top:204px;
+    right: 0px;
+}
+.card-id-error{
+    top:244px;
+    right:-12px;
+}

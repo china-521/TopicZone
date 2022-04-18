@@ -1,0 +1,275 @@
+/*
+    日志详情样式表
+*/
+
+
+/*外部容器*/
+.topic-wrapper {
+    padding: 10px 0;
+}
+
+/* 文章内容区 */
+.topic-detail-wrapper {
+    width: 1200px;
+    min-height: 700px;
+    margin: 0 auto;
+    background: #ffefba; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffefba, #ffffff); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffefba, #ffffff);
+    border: 1px solid red;
+}
+
+/*回到主页*/
+.topic-detail-wrapper .publish-detail {
+    display: flex;
+    padding: 10px 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.qq-zone-wrapper .qq-zone-top .page-native .login-out-btn:hover {
+    cursor: pointer;
+    border: 1px solid orchid;
+}
+
+
+.topic-detail-wrapper .back-to-main {
+    min-width: 100px;
+    height: 25px;
+    color:#FF6666;
+    line-height: 25px;
+    margin-left: 20px;
+}
+
+/*发布日期*/
+.topic-detail-wrapper .publish-date {
+    min-width: 100px;
+    height: 25px;
+    line-height: 25px;
+}
+
+.topic-detail-wrapper .publish-date .topic-author {
+    margin-right: 20px;
+}
+
+.topic-detail-wrapper h1 {
+    width: 100%;
+    height: 60px;
+    margin-bottom: 10px;
+    padding-top: 20px;
+    line-height: 60px;
+    text-align: center;
+    font-family: "黑体";
+}
+
+.topic-detail-wrapper .line {
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid darksalmon;
+}
+
+.topic-detail-wrapper .topic-content {
+    text-align: left;
+    text-indent: 2rem;
+    line-height: 30px;
+}
+
+/* 好友评论区 */
+::-webkit-scrollbar {
+    width: 3px; /*滚动条宽度*/
+    height: 3px; /*滚动条高度*/
+}
+
+.reply-wrapper {
+    width: 1200px;
+    min-height: 100px;
+    margin: 20px auto;
+    /*background: rgba(255, 255, 255, .6);*/
+    background: #C6FFDD;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f7797d, #FBD786, #C6FFDD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border: 1px solid red;
+}
+
+.reply-friend-area .host-reply-wrapper,
+.host-reply .host-reply-wrapper {
+    width: 1200px;
+    /*margin: 20px auto;*/
+    margin-top: 20px;
+    margin-bottom: 0;
+    /*background: rgba(255, 255, 255, .6);*/
+    background: #C6FFDD;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f7797d, #FBD786, #C6FFDD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    transition: all 0.1s ease;
+    /* 隐藏 */
+    height: 0px;
+    overflow: hidden;
+}
+
+.reply-wrapper p,
+.host-reply-wrapper p {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    padding: 10px 0;
+    font: bolder 18px "微软雅黑";
+    text-indent: 2rem;
+}
+
+.reply-wrapper .reply-form,
+.host-reply-wrapper .reply-form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.reply-wrapper .topic-reply-area,
+.host-reply-wrapper .topic-reply-area {
+    max-width: 80%;
+    min-width: 80%;
+    min-height: 50px;
+    text-indent: 1rem;
+    border: 1px solid deepskyblue;
+    border-radius: 4px 4px;
+    outline: none;
+    resize: none;
+
+}
+
+.reply-wrapper img,
+.host-reply-wrapper img {
+    width: 60px;
+    height: 60px;
+    margin-left: 40px;
+    margin-right: 20px;
+    border-radius: 50% 50%;
+    border: 1px solid orchid;
+}
+
+.reply-wrapper .reply-btn,
+.host-reply-wrapper .reply-btn {
+    width: 100px;
+    height: 40px;
+    margin: 0 10px;
+    background: orange;
+    border: 1px solid deepskyblue;
+    border-radius: 4px 4px;
+    cursor: pointer;
+}
+
+.reply-wrapper .reply-btn:hover,
+.host-reply-wrapper .reply-btn:hover {
+    background: palevioletred;
+    color: white;
+}
+
+/* 好友回复区 */
+.topic-wrapper .reply-friend-area {
+    width: 1200px;
+    min-height: 100px;
+    margin: 0 auto;
+    border: 1px solid red;
+    border-bottom: none;
+    /*background: rgba(255, 255, 255, .6);*/
+    background: #C6FFDD;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f7797d, #FBD786, #C6FFDD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.topic-wrapper .reply-friend-area li {
+    min-height: 100px;
+    margin-top: 10px;
+    border-bottom: 1px solid lightskyblue;
+}
+
+.topic-wrapper .reply-friend-area li .friend-reply,
+.topic-wrapper .reply-friend-area li .host-reply {
+    width: 100%;
+}
+
+.topic-wrapper .reply-friend-area li .host-reply .host-reply-info {
+    margin-left: 60px;
+}
+
+.topic-wrapper .reply-friend-area li .friend-reply .reply-info,
+.topic-wrapper .reply-friend-area li .host-reply .host-reply-info {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.topic-wrapper .reply-friend-area li .reply-info .reply-nick-name,
+.topic-wrapper .reply-friend-area li .host-reply-info .host-reply-nick-name {
+    margin-right: 20px;
+}
+
+.topic-wrapper .reply-friend-area li img {
+    width: 60px;
+    height: 60px;
+    margin-left: 40px;
+    margin-right: 20px;
+    border-radius: 50% 50%;
+    border: 1px solid orchid;
+}
+
+.topic-wrapper .reply-friend-area li .reply-info .reply-comments {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+
+.topic-wrapper .reply-friend-area li .reply-info .reply-comments:hover {
+    color: orangered;
+    cursor: pointer;
+}
+
+.topic-wrapper .reply-friend-area li .reply-info .reply-delete {
+    position: absolute;
+    right: 100px;
+    top: 10px;
+}
+
+.topic-wrapper .reply-friend-area li .reply-info .reply-delete:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.topic-wrapper .reply-friend-area li .host-reply .host-reply-delete {
+    position: absolute;
+    right: 80px;
+    top: 10px;
+}
+
+.topic-wrapper .reply-friend-area li .host-reply .host-reply-delete:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.topic-wrapper .reply-friend-area li .friend-reply .reply-content {
+    width: 100%;
+    min-height: 60px;
+    text-indent: 7.5rem;
+    text-align: left;
+}
+
+.topic-wrapper .reply-friend-area li .host-reply .host-reply-content {
+    width: 100%;
+    min-height: 60px;
+    text-align: left;
+    text-indent: 11.5rem;
+}
+
+/* 没有评论时的提示区 */
+.topic-wrapper .reply-friend-area .no-reply p {
+    width: 200px;
+    height: 100px;
+    font: bold 18px "微软雅黑 Light";
+    text-align: center;
+    line-height: 100px;
+    margin: 0 auto;
+    color: red;
+}

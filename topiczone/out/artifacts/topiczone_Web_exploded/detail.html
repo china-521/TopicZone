@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/detail.css}">
+    <link rel="icon" th:href="@{/imgs/icon/往事随风.jpg}">
+    <title>detail</title>
+    <script th:src="@{/js/detail.js}"></script>
+</head>
+<body>
+<div class="topic-wrapper">
+    <!-- 文章内容区-->
+    <div class="topic-detail-wrapper">
+        <!-- 标题-->
+        <h1 th:text="${session.topic.title}">我就是我</h1>
+        <div class="publish-detail">
+            <a th:href="@{|/user.do?choice=friend&id=${session.userBasic.id}|}" class="back-to-main">&lt;&lt;&ensp;返回个人主页</a>
+            <div class="publish-date">
+                <span th:text="${session.topic.author.nickName}" class="topic-author">作者：往事随风</span>
+                <span>发布日期：</span>
+                <span th:text="${session.topic.publishDate}">2020-01-01 00:00:00</span>
+            </div>
+        </div>
+        <span class="line"></span>
+        <!-- 正文-->
+        <p class="topic-content" th:text="${session.topic.content}">hello</p>
+    </div>
+    <!-- 评论区-->
+    <div class="reply-wrapper">
+        <p>留下你精彩的评论吧</p>
+        <form th:action="@{/reply.do}" method="post" class="reply-form">
+            <input type="hidden" name="choice" value="reply">
+            <!-- 查看日志的用户的id-->
+            <img th:src="@{|/imgs/${session.userBasic.headImage}|}" alt="头像">
+            <textarea name="content" required class="topic-reply-area" placeholder="请发表有价值的评论"></textarea>
+            <input type="submit" value="发表评论" class="reply-btn">
+        </form>
+    </div>
+    <!-- 好友回复区-->
+    <div class="reply-friend-area">
+        <ul>
+            <li th:if="${#lists.isEmpty(session.topic.replyList)}" class="no-reply">
+                <p>尚未发表评论!</p>
+            </li>
+            <li th:unless="${#lists.isEmpty(session.topic.replyList)}" th:each="reply : ${session.topic.replyList}">
+                <!-- 好友评论(一级评论)-->
+                <div class="friend-reply">
+                    <div class="reply-info">
+                        <img th:src="@{|/imgs/${reply.author.headImage}|}" alt="头像">
+                        <span th:text="${reply.author.nickName}" class="reply-nick-name">我爱你</span>
+                        <span th:text="${reply.replyDate}" class="reply-date">2000-01-01</span>
+                        <span th:if="${session.topic.author.id == session.visitId}"
+                              th:author="${reply.author.nickName}"
+                              th:onclick="|deleteReply(this.getAttribute('author'),${reply.id})|"
+                              class="reply-delete">删除评论</span>
+                        <span class="reply-comments">回复评论</span>
+                    </div>
+                    <p th:text="${reply.content}" class="reply-content">往事随风</p>
+                    <!-- 回复评论框-->
+                    <div class="host-reply-wrapper">
+                        <p>回复你精彩的评论吧</p>
+                        <form th:action="@{/reply.do}" method="post" class="reply-form">
+                            <input type="hidden" name="choice" value="hostReply">
+                            <input type="hidden" name="replyId" th:value="${reply.id}">
+                            <img th:src="@{|/imgs/${session.userBasic.headImage}|}" alt="头像">
+                            <textarea name="content" required class="topic-reply-area"
+                                      placeholder="请发表有价值的评论"></textarea>
+                            <input type="submit" value="发表评论" class="reply-btn">
+                        </form>
+                    </div>
+                </div>
+                <!-- 作者回复好友评论-->
+                <div th:if="${reply.hostReply != null}" th:each="hostReply : ${reply.hostReply}" class="host-reply">
+                    <!-- 展示回复的用户信息-->
+                    <div class="host-reply-info">
+                        <img th:src="@{|/imgs/${hostReply.author.headImage}|}" alt="头像">
+                        <span th:text="|${hostReply.author.nickName} 回复 ${reply.author.nickName}|"
+                              class="host-reply-nick-name">我爱你</span>
+                        <span th:text="${hostReply.hostReplyDate}" class="host-reply-date">2000-01-01</span>
+                        <span th:if="${session.topic.author.id == session.visitId}"
+                              th:author="${hostReply.author.nickName}"
+                              th:onclick="|deleteHostReply(this.getAttribute('author'),${hostReply.id})|"
+                              class="host-reply-delete">删除评论</span>
+                    </div>
+                    <!-- 展示回复内容-->
+                    <p th:text="${hostReply.content}" class="host-reply-content">1234564656</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

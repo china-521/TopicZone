@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+    <link rel="icon" th:href="@{/imgs/icon/往事随风.jpg}">
+    <title>register</title>
+
+    <script th:src="@{/js/register.js}"></script>
+</head>
+<body>
+<div class="register-wrapper">
+    <div class="register-title-wrapper">
+        <h2>
+            注册账号
+        </h2>
+        <p class="login">
+            <span>已有账号</span>
+            <a th:href="@{/user.do?choice=intoLogin}" id="go-login">前往登录</a>
+        </p>
+    </div>
+    <form th:action="@{/user.do}" method="post" class="register-form">
+        <input type="hidden" name="choice" value="register">
+        <input type="hidden" name="mode" value="register">
+        账&ensp;&ensp;&ensp;&ensp;号：<input type="number" name="loginId" class="input loginId"><br>
+
+        昵&ensp;&ensp;&ensp;&ensp;称：<input type="text" name="nickName" class="input nickName"><br>
+
+        密&ensp;&ensp;&ensp;&ensp;码：<input type="password" name="password" class="input password"><br>
+
+        确认密码：<input type="password" class="input password1"><br>
+
+        头&ensp;&ensp;&ensp;&ensp;像：<input type="text" name="headImage" class="input headImage"><br>
+
+        <input type="submit" value="立即注册" class="register-btn">
+    </form>
+    <p th:if="${session.registerError}" class="register-validation">
+        你要注册的账户已经存在 <br>
+        请重新输入
+    </p>
+</div>
+</body>
+</html>

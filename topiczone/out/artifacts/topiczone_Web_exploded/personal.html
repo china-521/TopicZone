@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/personal.css}">
+    <link rel="icon" th:href="@{/imgs/icon/往事随风.jpg}">
+    <title>personal</title>
+
+    <script th:src="@{/js/personal.js}"></script>
+</head>
+<body>
+<div class="personal-wrapper">
+    <h1 class="personal-title">个人中心</h1>
+    <div class="personal-show-update">
+        <ul th:if="${session.userDetail != null}" class="personal-show">
+            <li>
+                姓&ensp;&ensp;&ensp;名：
+                <span th:text="${session.userDetail.getRealName()}"></span>
+            </li>
+            <li>
+                性&ensp;&ensp;&ensp;别：<span th:text="${session.userDetail.getSex()}"></span><br>
+            </li>
+            <li>
+                邮&ensp;&ensp;&ensp;箱：<span th:text="${session.userDetail.getEmail()}"></span><br>
+            </li>
+            <li>
+                星&ensp;&ensp;&ensp;座：<span th:text="${session.userDetail.getStar()}"></span><br>
+            </li>
+            <li>
+                生&ensp;&ensp;&ensp;日：<span th:text="${session.userDetail.getBirth()}"></span><br>
+            </li>
+            <li>
+                手机号&ensp; ：<span th:text="${session.userDetail.getPhone()}"></span><br>
+            </li>
+            <li>
+                身份证号：<span th:text="${session.userDetail.getIDNumber()}"></span><br>
+            </li>
+        </ul>
+        <form th:action="@{/user.do}" method="post" class="personal-form">
+            <input type="hidden" name="choice" value="updatePersonal">
+            <input type="hidden" name="mode" value="personal">
+            <input type="hidden" name="userBasicId" th:value="${session.userBasic.id}">
+            <ul>
+                <li>
+                    姓&ensp;&ensp;&ensp;名：<input type="text" name="name" class="name">
+                </li>
+                <li>
+                    性&ensp;&ensp;&ensp;别：<input type="text" name="sex" class="sex">
+                </li>
+                <li>
+                    邮&ensp;&ensp;&ensp;箱：<input type="email" autocomplete="off" name="email" class="email">
+                </li>
+                <li>
+                    星&ensp;&ensp;&ensp;座：<input type="text" name="star" class="star">
+                </li>
+                <li>
+                    生&ensp;&ensp;&ensp;日：<input type="date" name="birth" class="birth">
+                </li>
+                <li>
+                    手机号&ensp; ：<input type="tel" autocomplete="off" name="phone" class="phone">
+                </li>
+                <li>
+                    身份证号：<input type="text" autocomplete="off" name="cardId" class="cardId">
+                </li>
+            </ul>
+            <div class="btn-wrapper">
+                <input type="submit" value="更新个人信息" class="personal-btn">
+                <a th:user="${session.userBasic.nickName}"
+                   th:onclick="|shutAccount(this.getAttribute('user'),${session.userBasic.id})|" class="shut-account">注销账户</a>
+                <a th:href="@{|/user.do?choice=friend&id=${session.userBasic.id}|}" class="back-to-main">返回个人主页</a>
+            </div>
+            <ul class="error-message" th:if="${session.errorMap != null}" th:each="errorMap : ${session.errorMap}">
+                <li th:if="${errorMap.key == 'phoneError'}" class="phone-error">手机号已经存在，请重新输入</li>
+                <li th:if="${errorMap.key == 'emailError'}" class="email-error">邮箱已经存在，请重新输入</li>
+                <li th:if="${errorMap.key == 'cardIdError'}" class="card-id-error">身份证号已经存在，请重新输入</li>
+            </ul>
+        </form>
+    </div>
+</div>
+</body>
+</html>

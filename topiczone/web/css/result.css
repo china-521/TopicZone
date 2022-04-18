@@ -1,0 +1,23 @@
+/* 找回密码样式表 */
+
+.result-wrapper{
+    margin:0 auto;
+    text-align: center;
+    padding:40px;
+    background: #ffefba; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffefba, #ffffff); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffefba, #ffffff);
+    border:1px solid red;
+}
+
+.back-to-main{
+    display: inline-block;
+    width:100px;
+    height:30px;
+    color:aquamarine;
+    font-family:"微软雅黑";
+    margin-top:20px;
+    line-height: 30px;
+    text-decoration: none;
+    background-image:linear-gradient(to right,deepskyblue,mediumpurple) ;
+}

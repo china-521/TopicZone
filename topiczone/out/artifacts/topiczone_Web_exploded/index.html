@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="icon" th:href="@{/imgs/icon/往事随风.jpg}">
+    <title>home</title>
+    <script th:src="@{/js/index.js}"></script>
+</head>
+<body>
+<div class="topic-zone-wrapper">
+    <!-- 顶部-->
+    <div class="topic-zone-top">
+        <h1 class="topic-zone-title">欢迎使用日志管理系统</h1>
+        <div class="page-native">
+            <ul>
+                <li class="welcome-li">
+                    <p class="welcome-title">欢迎进入</p>
+                    <p th:text="|${session.friend.nickName}|" class="welcome-title userNickName">往事随风</p>
+                    <p class="welcome-title">的空间</p>
+                    <img th:src="@{|/imgs/${session.friend.headImage}|}" alt="头像" class="user-head-image">
+                </li>
+                <li>
+                    <a th:if="${session.userBasic.id != session.friend.id}"
+                       th:href="@{|/user.do?choice=friend&id=${session.userBasic.id}|}"
+                       class="back-to-main">&lt;&lt;&ensp;返回个人空间</a>
+                </li>
+                <li>
+                    <button th:if="${session.userBasic.id == session.friend.id}" th:data="${session.userBasic.nickName}"
+                            th:onclick="|out(this.getAttribute('data'))|" class="login-out-btn">退出登录
+                    </button>
+                </li>
+                <li>
+                    <a th:if="${session.userBasic.id == session.friend.id}"
+                       th:href="@{|/user.do?choice=personal&userBasicId=${session.userBasic.id}|}"
+                       class="personal">个人中心</a>
+                </li>
+                <li>
+                    <a th:if="${session.userBasic.id == session.friend.id}"
+                       th:href="@{|/user.do?choice=friendManage&userBasicId=${session.userBasic.id}|}"
+                       class="friend-manage">
+                        用户管理
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 中间内容区-->
+    <div class="topic-zone-center">
+        <!-- 好友列表-->
+        <div class="topic-zone-friend-list-wrapper">
+            <h2>关注列表</h2>
+            <ul class="topic-zone-friend-list">
+                <li th:if="${#lists.isEmpty(session.friend.friendList)}" class="friend-list-null">关注列表为空</li>
+                <li th:unless="${#lists.isEmpty(session.friend.friendList)}"
+                    th:each="friend : ${session.friend.friendList}">
+                    <img th:src="@{|/imgs/${friend.headImage}|}" alt="头像" class="friend-head-image">
+                    <a th:href="@{|/user.do?choice=friend&id=${friend.id}|}" th:text="${friend.nickName}"></a>
+                </li>
+            </ul>
+        </div>
+        <!-- 日志列表-->
+        <div class="topic-zone-topic-list-wrapper">
+            <h2>日志列表</h2>
+            <a th:if="${session.userBasic.id == session.friend.id}"
+               th:href="@{|/topic.do?choice=publishPage&id=${session.userBasic.id}|}" class="publish">发布日志</a>
+            <table class="topic-zone-topic-table">
+                <tr>
+                    <th colspan="4" th:if="${#lists.isEmpty(session.friend.topicList)}">暂无发表的日志</th>
+                </tr>
+                <tr class="topic-zone-topic-table-head">
+                    <th>ID</th>
+                    <th>标题</th>
+                    <th>发布时间</th>
+                    <th th:if="${session.userBasic.id == session.friend.id}">操作</th>
+                </tr>
+                <tr th:unless="${#lists.isEmpty(session.friend.topicList)}"
+                    th:each="topic : ${session.friend.topicList}">
+                    <td th:text="${topic.getId()}">1</td>
+                    <td class="topic-title">
+                        <a th:href="@{|/topic.do?choice=topicDetail&id=${topic.id}&visitId=${session.userBasic.id}|}"
+                           th:text="${topic.getTitle()}"></a>
+                    </td>
+                    <td th:text="${topic.getPublishDate()}">2022-01-01</td>
+                    <td th:if="${session.userBasic.id == session.friend.id}"
+                        th:data-title="${topic.title}"
+                        th:onclick="|deleteTopic(${topic.id},${topic.author.id},this.getAttribute('data-title'))|"
+                        class="delete">删除
+                    </td>
+                </tr>
+            </table>
+            <div class="page-btn-wrapper">
+                <button th:onclick="|page(${session.friend.id},${1})|" th:disabled="${session.pageNumber == 1}">首页
+                </button>
+                <button th:onclick="|page(${session.friend.id},${session.pageNumber + 1})|"
+                        th:disabled="${session.pageNumber == session.pageCount || session.pageCount == 0}">下一页
+                </button>
+                <button th:onclick="|page(${session.friend.id},${session.pageNumber - 1})|"
+                        th:disabled="${session.pageNumber == 1}">上一页
+                </button>
+                <button th:onclick="|page(${session.friend.id},${session.pageCount})|"
+                        th:disabled="${session.pageNumber == session.pageCount || session.pageCount == 0}">尾页
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- 底部-->
+    <div class="topic-zone-bottom">
+        <p>&copy;版权所有 · ☆往事随風☆</p>
+    </div>
+</div>
+</body>
+</html>
