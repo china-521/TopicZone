@@ -75,7 +75,7 @@
 
 ## 三、底层逻辑结构
 
-![image-20220407221916532](img.assets/2-本系统底层架构.png)
+![image](https://user-images.githubusercontent.com/72770576/163805882-22cf3db6-780c-40d3-a5e9-91ca9e5834b2.png)
 
 
 
@@ -85,15 +85,15 @@
 
 * 登录菜单界面
 
-![image-20220416223538785](img.assets/image-20220416223538785.png)
+![image](https://user-images.githubusercontent.com/72770576/163805915-cea3cc77-a1d2-4fa7-ada9-1ed4ec3ac804.png)
 
 * 注册界面
 
-![image-20220416223559371](img.assets/image-20220416223559371.png)
+![image](https://user-images.githubusercontent.com/72770576/163805938-9394e7e6-d4aa-46d0-aa69-79b0c33bcbd1.png)
 
 * 主页
 
-![image-20220416223633105](img.assets/image-20220416223633105.png)
+![image](https://user-images.githubusercontent.com/72770576/163805951-b3d2d9f7-dbd9-4b83-82e9-4851c546310a.png)
 
 * 发布日志界面
 
@@ -101,19 +101,19 @@
 
 * 日志详情界面
 
-![image-20220416223855002](img.assets/image-20220416223855002.png)
+![image](https://user-images.githubusercontent.com/72770576/163805975-fa3a0793-48cb-4516-8ede-2103fcb024b4.png)
 
-![image-20220416224002874](img.assets/image-20220416224002874.png)
+![image](https://user-images.githubusercontent.com/72770576/163805992-e915337c-b373-4f4e-9090-31e1270be1e2.png)
 
 * 用户管理界面
 
-![image-20220416223801295](img.assets/image-20220416223801295.png)
+![image](https://user-images.githubusercontent.com/72770576/163806011-c49c3aa7-2f70-4eb0-a209-3d64b1cf9fb7.png)
 
 
 
 * 个人中心界面
 
-![image-20220416223717300](img.assets/image-20220416223717300.png)
+![image](https://user-images.githubusercontent.com/72770576/163806022-4144f175-9f9b-46ae-b367-bb8bc27693b6.png)
 
 
 
