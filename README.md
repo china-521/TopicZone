@@ -96,8 +96,7 @@
 ![image](https://user-images.githubusercontent.com/72770576/163805951-b3d2d9f7-dbd9-4b83-82e9-4851c546310a.png)
 
 * 发布日志界面
-
-![image-20220416223653325](img.assets/image-20220416223653325.png)
+![image](https://user-images.githubusercontent.com/72770576/163806505-9b956238-f8de-423b-ab74-d278bbca27c0.png)
 
 * 日志详情界面
 
